@@ -1,0 +1,68 @@
+body {
+	background-image:url("https://wallpapercave.com/wp/0egAicj.jpg");
+
+}
+
+.page {
+	height:200px;
+	background-color:transparent;
+	margin-top:80px;
+	margin-left:60px;
+	width:250px;
+}
+input{
+	background-color:transparent;
+	margin-left:70px;
+	color:white;
+	margin-top:20px;
+
+}	
+.btn {
+	padding:5px 20px 5px  20px;
+	margin-top:14px;
+	margin-left:100px;
+	border:none;
+	color:#363434;
+	background-color:white;
+
+}
+.forgot{
+	color:white;
+	font-size:12px;
+	margin-left:150px;
+	text-decoration:none;
+}
+#signpage {
+	color:white;
+	font-size:12px;
+	margin-left:180px;
+	color:#4ef037;
+	text-decoration:none;
+
+}
+h1 {
+	color:white;
+	margin-left:100px;
+}
+#click {
+		
+	background-color: #4ef037;
+
+}	
+input[type="checkbox"] {
+	margin-top:-17px;
+	margin-left:220px;
+  	appearance: none;
+  	width: 15px;
+  	height: 15px;
+  	border: 2px solid #4ef037;
+	border-radius: 12px 0px;
+ 	background-color: white;
+  	cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+	background-color: red;
+  	border-color: #2196F3;
+}
+

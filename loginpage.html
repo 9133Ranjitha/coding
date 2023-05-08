@@ -1,0 +1,67 @@
+<html>
+
+	<head>
+		<title>login page</title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="logeIn.css">
+	<body>
+		<div class="page">
+			<h1>Log In</h1>
+			<input class="UserName"  type ="text"  placeholder="UserName"></br>
+			<input type="password" id="myInput" value="password">  
+			<div class="checkbox-container"><input type="checkbox"  id ="click" value="see" onclick="security()">
+			</div></br>
+			<a  class ="forgot" href="">forgot password?</a>
+			<button class="btn"><b>LOG IN </b></button><br><br>
+			<a  id ="signpage" href="signpage.html">signpage?</a>
+			
+		</div>
+	</body>
+	<script>
+
+		function security () {
+    		var check= document.getElementById("myInput");
+    			if (check.type === "password") {
+    	  			check.type = "text";
+    			} else {
+      				check.type = "password";
+    			}
+  		}
+	
+		var button = document.querySelector(".btn");
+		var bag = JSON.parse(localStorage.getItem("data")) || [] ;
+		
+		button.onclick = function () {
+
+		var UserName = document.querySelector(".UserName").value;
+		var password = document.querySelector("#myInput").value;
+			console.log(UserName, password)
+			if(UserName != ""  && password !="")
+			{
+				for(var i = 0; i < bag.length; i++)
+				{	
+					if(UserName === bag[i].UserName)
+					{		
+				
+						if(password === bag[i].password)
+						{
+							localStorage.setItem("presentData", JSON.stringify(bag[i]));
+							alert("Loged in Successfully")
+							window.location.href = "dashbord.html";
+							return
+						}
+					
+					}
+				}
+
+			}
+			else{
+				alert("The fileds should be empty!");	
+				return;
+			}
+
+			alert("User Doesnt exist")
+			window.location.href = "signpage.html";
+		}
+	</script>
+</html>
