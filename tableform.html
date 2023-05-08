@@ -1,0 +1,133 @@
+<!DocTYPE HTML>
+ <html>
+ 	<head>
+ 		<title>formdetails</title>
+ 		
+          <link rel="stylesheet" href="tableform.css">	       
+ 	</head>
+ 	<body>
+ 		<div class ="main">
+ 			<h4 class = "color">Enter the Details</h4>
+ 			<div>
+				<input  class = "enter" type = "text" placeholder = "Employee name"></br>
+ 				<input class = "depart" type = "text" placeholder = "Department"></br>
+				<input class = "salone" type = "number" placeholder = "Sales1"></br>
+				<input class = "saltwo" type = "number" placeholder = "Sales2"></br>
+ 				<button class = "submit">create</button></br>
+				<table id="table"></table>
+
+ 			</div>
+		</div>
+ 		
+ 	</body>
+ 	<script>
+		
+		//triggering the table
+
+		var table = document.querySelector("#table");
+		
+		//for setting the border
+
+		table.setAttribute("border" ,"1px");
+		
+
+		//creating one row for storing heading
+
+ 		var row=document.createElement("tr");
+		
+		//creating name heading
+
+		let Name=document.createElement("th");
+
+		//update innertext
+
+		Name.innerText="Name";
+
+		var dept=document.createElement("th");
+		dept.innerText="department";
+
+		var sale1=document.createElement("th");
+		sale1.innerText="Sale1";
+
+
+		var sale2=document.createElement("th");
+		sale2.innerText="Sale2";
+
+
+		//creating avg heading
+
+		var avg=document.createElement("th");
+		
+		//update the avg text
+		
+		avg.innerText="average";
+
+
+		//append the all the heading in row
+
+		row.append(Name,dept,sale1,sale2,avg);
+
+		//append the row in table
+
+		table.append(row);
+	
+		
+		//trigger th button
+
+		var submit = document.querySelector(".submit");
+		
+		//creating function for  onclick
+
+		submit.onclick=function () {
+
+		//creting another row for entering the data
+
+		var minnurow=document.createElement("tr");
+		
+		//creating the datacell in table
+
+		var col1=document.createElement("td");
+		
+		//trigger the input value
+
+		var enter = document.querySelector(".enter").value;
+
+		//given the inertext no need to update
+
+		col1.innerText=enter;
+		
+		var col2=document.createElement("td");
+		var depart = document.querySelector(".depart").value;
+		col2.innerText=depart;
+
+		var col3=document.createElement("td");
+		var salone = document.querySelector(".salone").value;
+		col3.innerText=salone;
+
+		var col4=document.createElement("td");
+		var saltwo = document.querySelector(".saltwo").value;
+		col4.innerText=saltwo;
+
+		//creating one datacell
+		var col5=document.createElement("td");
+		
+		//implement the avrage sal1+sal2/2; number string to number convertion
+
+		
+		var avrg=((Number(salone)+Number(saltwo))/2);
+		col5.innerText=avrg;
+
+		//append the all the data cells in new row
+
+		minnurow.append(col1,col2,col3,col4,col5);
+
+		//append the new row in table
+
+		table.append(minnurow);
+		
+
+		}
+
+ 	</script>
+ 	
+ </head>

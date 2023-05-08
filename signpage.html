@@ -1,0 +1,76 @@
+<html>
+	<head>
+	<title>hacker login </title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="signpag.css">
+	<body>
+		<div class="loginDepartment">
+			<h1>Sign Up</h1>
+			<input  class="Name"  type="text" placeholder="Name"></br>
+			<input  class="UserName"  type="text" placeholder="UserName"></br>
+			<input  class="email"  type="text" placeholder="Enter your Email Address"></br>
+
+			<input type="password" id="myInput" value="Password">  
+			<div class="checkbox-container"><input type="checkbox"  id ="click" value="see" onclick="myFunction()">
+			</div>
+
+			<input  class="phoneNumber"  type="number" placeholder="Enter your phoneNumber"></br>
+			<button class="btn" ><b>SING UP</b></button>
+			<p>Already you have account <a href="loginpage.html">login ?</a></p>
+		</div>
+	</body>
+	<script>
+
+	function myFunction() {
+    		var check= document.getElementById("myInput");
+    		if (check.type === "password") {
+    	  		check.type = "text";
+    		} else {
+      			check.type = "password";
+    		}
+  	}
+
+	
+	var button = document.querySelector(".btn");
+	var bag = JSON.parse(localStorage.getItem("data"))  || [] ;
+	
+	//we  are triiger the all the input along with button
+
+	button.onclick=function () {
+		var name = document.querySelector(" .Name").value; 
+		var UserName = document.querySelector(" .UserName").value; 
+		var email = document.querySelector(" .email").value; 
+		var password = document.querySelector(" #myInput").value; 
+		var phoneNumber = document.querySelector(" .phoneNumber").value; 	
+
+		
+		if( name == ""  && UserName == ""  && email  ==""  && password==""  && phoneNumber=="")
+		{
+			
+			alert("Please enter valid details");
+			return;
+		}
+		//checking the local previous data is equal to present user data or not 
+
+		else{
+			for(let i=0; i<bag.length; i++){
+				if(UserName === bag[i].UserName){
+					alert("user already exist");
+					return;
+				}
+			}	
+		}
+	
+		//storing the in local storage 
+
+		localStorage.setItem("data", JSON.stringify([...bag, {name, UserName, email, password, phoneNumber}]) )
+		alert("Account created successfully");
+
+		//going to another window
+
+		window.location.href = "loginpage.html";
+	}
+
+
+	</script>
+</html>
