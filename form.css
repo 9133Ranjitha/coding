@@ -1,0 +1,21 @@
+ .tag {
+          	margin-top:5px;
+          	border-radius:4px;
+          
+          }
+
+.submit {
+          	background-color:brown;
+	padding:2px 65px 2px 65px;
+          	margin-top:5px;
+          	color:white;
+          	border-color:brown;
+          }
+
+.border{
+        
+	display : flex;
+	flex-wrap : wrap ;
+	
+}
+

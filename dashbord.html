@@ -1,0 +1,56 @@
+<html>
+	<head>
+		<title>Dash Bord</title>
+	</head>
+	<link rel = "stylesheet" type="text/css" href="dashbord.css">
+	<body>
+		<div class="main">
+		<h1>Dash Bord</h1>
+		<button class="bttnn"><b>Log Out</b></button></div>
+		<div class = "enter"></div>		
+	
+		
+	</body>
+	<script>
+		
+		var button = document.querySelector(".bttnn");
+		
+		var div = document.querySelector(".enter");
+		
+		var getItem = JSON.parse(localStorage.getItem("presentData"));
+		
+		
+		var NameTag = document.createElement("div");
+		NameTag.innerHTML ="name :"+(getItem.name);
+		
+		var userTag = document.createElement("div");
+		userTag.innerHTML ="UserName :"+(getItem.user);
+		
+		var mailTag = document.createElement("div");
+		mailTag.innerHTML ="email :"+(getItem.mail);
+		
+		var numberTag = document.createElement("div");
+		numberTag.innerHTML ="PhoneNumber :"+(getItem.number);
+		
+		
+		var create = document.createElement("div");
+		create.append(NameTag,userTag,mailTag,numberTag);
+		create.style.border="1px solid green";
+		create.style.color="white";
+		create.style.wdth="10px";
+		create.style.marginRight = "10px";
+		create.style.marginLeft = "20px";
+		create.style.backgroundColor="#4ef037";
+		
+		
+
+		div.append(create);
+		
+		button.onclick = function() {
+			localStorage.removeItem("presentData");
+			alert("lgout done");
+			window.location.href = "loginpage.html";
+		}
+		
+	</script>
+</html>

@@ -1,0 +1,52 @@
+<!DocTYPE HTML>
+ <html>
+ 	<head>
+ 		<title>formdetails</title>
+ 		
+          <link rel="stylesheet" href="form.css">	       
+ 	</head>
+ 	<body>
+ 		<div class ="main">
+ 			<h4 class = "color">Enter the Details</h4>
+ 			<div><input  class = "enter" type = "text" placeholder = "Name"></div>
+ 			<div><input class = "tag" type = "number" placeholder = "Phone Number"></div>
+ 			
+ 			<button class = "submit">create</button>
+ 			
+ 		
+ 		</div>
+ 		<div class = "border"></div>
+ 	
+ 	</body>
+ 	<script>
+ 		let divTag = document.querySelector(".enter");
+ 		let Tag = document.querySelector(".tag");
+ 		let div = document.querySelector(".submit");
+ 		let border = document.querySelector(".border");
+ 		
+ 		div.onclick=function() {
+ 			let form = document.createElement("div");
+ 			form.innerHTML = "Name : "+(divTag.value);
+ 			
+ 			let number = document.createElement("div");
+ 			number.innerHTML = "phone number : "+(Tag.value);
+
+ 			let store = document.createElement("div");
+ 			store.append(form,number);
+ 			store.style.backgroundColor="rgb(245,245,245)";
+			store.style.margin = "10px";
+			store.style.padding = "5px"
+ 					
+ 			border.append(store);
+ 			document.querySelector(".main").append(border);
+ 		
+ 		}
+ 		
+ 		
+ 		
+ 	
+ 	
+ 	
+ 	</script>
+ 	
+ </head>

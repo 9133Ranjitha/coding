@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<title>password hide show</title>
+		<style>
+			#click {
+				margin-top:-16px;
+				margin-left:150px;
+			}	
+		</style>
+	</head>
+	<body>
+
+	<input type="password" id="myInput" value="Password">  
+
+	<div><input type="checkbox"  id ="click" value="see"onclick="myFunction()"> </div>
+	
+	</body>
+	<script>
+
+  		function myFunction() {
+    			var x = document.getElementById("myInput");
+    			if (x.type === "password") {
+    	  		x.type = "text";
+    			} else {
+      			x.type = "password";
+    		}
+  	}
+
+</script>
+
+</html>
