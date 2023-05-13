@@ -1,0 +1,188 @@
+<html>
+	<head>
+	<title>hacker login </title>
+	</head>
+	<style>
+	body {
+		background-image:url("https://images.pexels.com/photos/13208159/pexels-photo-13208159.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+					
+	}
+	nav {
+		border:2px solid white;
+		width:100%;
+		height:50px;
+		position:fixed;
+		font-style: italic;
+		top:0;
+		left:0;
+		padding-top:20px;
+		background:black;
+		color: white;
+
+	}
+	.aa {
+		font-size:25px;
+		font-style: italic;
+		color:white;
+		text-decoration:none;
+		margin-top:20px;
+		margin-left:300px;
+	}
+	#home {
+		font-size:25px;
+		color:white;
+		font-style: italic;
+		text-decoration:none;
+		margin-top:20px;
+		margin-left:100px;
+			
+		}
+	.loginDepartment {
+		
+		background-color:black;
+		margin-top:200px;
+		margin-left:650px;
+		height:370px;
+		border:3px solid white;
+		width:500px;
+		height:570px;
+
+	}
+	input{
+		background-color:transparent;
+		margin-left:70px;
+		color:white;
+		width:350px;
+		height:50px;
+		margin-top:20px;
+
+	}	
+	.btn {
+		padding:10px 50px 10px  50px;
+		margin-top:20px;
+		color:white;
+		margin-left:170px;
+		background-color:black;
+
+	}
+	#click {
+		
+		background-color: white;
+
+	}	
+	input[type="checkbox"] {
+	
+		margin-top:-35px;
+		margin-left:370px;
+		appearance: none;
+		color:black;
+		width: 15px;
+		height: 15px;
+		border: 2px solid white;
+		border-radius:3px;
+		background-color: white;
+		cursor: pointer;
+	}
+
+
+	input[type="checkbox"]:checked {
+		background-color: red;
+	  	border-color: white;
+	}
+
+	p {
+		text-align:center;
+		font-size:20px;
+		color:white;
+		
+	}
+	a {
+		font-size:20px;
+		color:white;
+		text-decoration:none;
+	}
+	h1 {
+		color:white;
+		margin-left:200px;
+	}
+
+	</style>
+	<body>
+		<nav>
+			<a class="aa" href="home.html" id="home">Home</a>
+			<a class="aa" href="addBook.html"> Add Books</a>
+			<a class="aa" href="allBook.html"> All Books</a>
+			<a class="aa" href="login.html">SignUp</a>
+			
+			</nav>
+		<div class="loginDepartment">
+			<h1>Sign Up</h1>
+			<input  class="Name"  type="text" placeholder="Name"></br>
+			<input  class="UserName"  type="text" placeholder="UserName"></br>
+			<input  class="email"  type="text" placeholder="Enter your Email Address"></br>
+
+			<input type="password" id="myInput" value="Password">  
+			<div class="checkbox-container"><input type="checkbox"  id ="click" value="see" onclick="myFunction()">
+			</div>
+
+			<input  class="phoneNumber"  type="number" placeholder="Enter your phoneNumber"></br>
+			<button class="btn" ><b>SING UP</b></button>
+			<p>Already you have account <a href="login.html">login ?</a></p>
+		</div>
+	</body>
+	<script>
+
+	function myFunction() {
+    		var check= document.getElementById("myInput");
+    		if (check.type === "password") {
+    	  		check.type = "text";
+    		} else {
+      			check.type = "password";
+    		}
+  	}
+
+	
+	var button = document.querySelector(".btn");
+	var box = JSON.parse(localStorage.getItem("data"))  || [] ;
+	//console.log(box);	
+	
+	//we  are triiger the all the input along with button
+
+	button.onclick=function () {
+		var name = document.querySelector(" .Name").value; 
+		var UserName = document.querySelector(" .UserName").value; 
+		var email = document.querySelector(" .email").value; 
+		var password = document.querySelector(" #myInput").value; 
+		var phoneNumber = document.querySelector(" .phoneNumber").value; 	
+
+		
+		if( name == ""  || UserName == ""  || email  ==""  || password==""  || phoneNumber=="")
+		{
+			
+			alert("Please enter valid details");
+			return;
+		}
+		//checking the local previous data is equal to present user data or not 
+
+		else{
+			for(let i=0; i<box.length; i++){
+				if(UserName === box[i].UserName){
+					alert("user already exist");
+					return;
+				}
+			}	
+		}
+	
+		//storing the in local storage 
+
+		localStorage.setItem("data", JSON.stringify([...box, {name, UserName, email, password, phoneNumber}]) )
+		alert("Account created successfully");
+
+		//going to another window
+
+		window.location.href = "login.html";
+	}
+
+
+	</script>
+</html>

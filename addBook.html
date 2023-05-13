@@ -1,0 +1,163 @@
+<html>
+	<head>
+		<title>Add Book</title>
+	</head>
+	<style>
+		body {
+		background-image:url("https://images.pexels.com/photos/13208159/pexels-photo-13208159.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+	
+	}
+	nav {
+		border:2px solid white;
+		width:100%;
+		height:50px;
+		position:fixed;
+		font-style: italic;
+		top:0;
+		left:0;
+		padding-top:20px;
+        	background:black;
+        	color: white;
+
+	}
+	a {
+		font-size:25px;
+		color:white;
+		font-style: italic;
+		text-decoration:none;
+		margin-top:20px;
+		margin-left:400px;
+	}
+	#home {
+		font-size:25px;
+		color:white;
+		font-style: italic;
+		text-decoration:none;
+		margin-top:20px;
+		margin-left:100px;
+	
+	}
+	.main {
+		width:500px;
+		height:750px;
+		border:1px solid white;
+		color:white;
+		margin-top:150px;
+		margin-left:650px;
+		
+	
+	}
+	.information {
+		width:400px;
+		height:50px;
+		margin-top:20px;
+		margin-left:50px;
+		border-left:none;
+		border-right:none;
+		border-top:none;
+		font-size:30px;
+		background-color:black;
+		border-bottom:1px solid white;
+	}
+	.btn {
+		background-color:black;
+		color:white;
+		width:170px;
+		height:40px;
+		font-size:20px;
+		font-style: italic;
+		margin-top:30px;
+		border:1px solid white;
+		margin-left:170px;
+	
+	}
+	.information::placeholder {
+ 		color:white;
+ 		padding-left:20px;
+  		font-style: italic;
+  		font-size:20px;
+	}
+	input {
+		color:white;
+		font-size:17px;
+	}
+	</style>
+	<body>
+	<document></document>
+		<nav>
+			<a href="home.html" id="home">Home</a>
+			<a href="addBook.html"> Add Books</a>
+			<a href="allBook.html"> All Books</a>
+			<a href="signup.html">SignUp</a>
+		
+		</nav>
+		<div class="main">
+			<input class="author information" type="text" placeholder="author"></br>
+			<input class="avatar information" type="text" placeholder="avatar"></br>
+			<input class="name information" type="text" placeholder="name"></br>
+			<input class="price information" type="text" placeholder="price"></br>
+			<input class="publisher information" type="text" placeholder="publisher"></br>
+			<input class="rate information" type="number" placeholder="rate"></br>
+			<input class="serial_number information" type="text" placeholder="serial_number"></br>
+			<input class="type information" type="text" placeholder="type"></br>
+			<input class="year information" type="number" placeholder="year"></br>
+			<button class="btn" onclick = "getInformation()">SUMBIT</button>
+		</div>
+	</body>
+	<script>
+		
+		var bags = JSON.parse(localStorage.getItem("bookDetails"));
+		function getInformation () {
+			
+			var author = document.querySelector(".author").value;
+			var avatar = document.querySelector(".avatar").value;
+			var name = document.querySelector(".name").value;
+			var price = document.querySelector(".price").value;
+			var publisher = document.querySelector(".publisher").value;
+			var rate = document.querySelector(".rate").value;
+			var seria_number = document.querySelector(".serial_Number").value;
+			var type = document.querySelector(".type").value;
+			var year = document.querySelector(".year").value;
+			
+			var inputStore = {author,avatar,name,price,publisher,rate,seria_number,type,year}; 
+			
+			if (inputStore === " ") {			
+				localStorage.setItem("bags",JSON.stringify([...bags,{inputStore}]));
+				alert("Book Added ");
+				window.location.href ="home.html";
+			}else{
+				
+				var alertCard = document.createElement("div");
+				alertCard.classList.add("alertCard");
+				alertCard.innerHTML = "Enter valid information"; 
+				
+				alertCard.style.backgroundColor = "black";
+				alertCard.style.border="3px solid white";
+				alertCard.style.color = "#29a19c";
+				alertCard.style.width = "200px";
+				alertCard.style.paddingLeft="50px";
+				alertCard.style.paddingTop="40px";
+				alertCard.style.fontSize="20px";
+				alertCard.style.height = "100px";
+				alertCard.style.marginTop="0px";
+				alertCard.style.marginLeft ="780px";
+				alertCard.style.top ="0px";
+				alertCard.style.position="fixed"; 
+				
+				
+				var imgDiv = document.createElement("img");
+				imgDiv.src="https://s3.amazonaws.com/media-p.slid.es/uploads/841259/images/4668908/LOGO_MosquitoAlert_cuadrado_PNG.png";
+				imgDiv.alt="";
+				imgDiv.style.width="100px";
+				imgDiv.style.height="70px";
+				imgDiv.style.marginLeft="20px";
+				alertCard.appendChild(imgDiv);
+				
+				console.log(alertCard);
+				document.body.appendChild(alertCard);
+				
+			}
+		}
+		
+	</script>
+</html>

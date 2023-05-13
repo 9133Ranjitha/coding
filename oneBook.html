@@ -1,0 +1,302 @@
+<html>
+	<head>
+		<title>One Book</title>
+	</head>
+	<style>
+		body {
+		background-image:url("https://images.pexels.com/photos/13208159/pexels-photo-13208159.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+	
+			}
+		nav {
+			border:2px solid white;
+			width:100%;
+			height:50px;
+			position:fixed;
+			font-style: italic;
+			top:0;
+			left:0;
+			padding-top:20px;
+        		background:black;
+        		color: white;
+
+		}
+		a {
+			font-size:25px;
+			font-style: italic;
+			color:white;
+			text-decoration:none;
+			margin-top:20px;
+			margin-left:400px;
+		}
+		#home {
+			font-size:25px;
+			color:white;
+			font-style: italic;
+			text-decoration:none;
+			margin-top:20px;
+			margin-left:100px;
+	
+		}
+		
+		.storeDepart {
+			
+			border:1px solid white;
+			width:900px;
+			margin-left:550px;
+			margin-top:140px;
+			padding-top:100px;
+			height:550px;
+		
+		
+		}
+		
+	</style>
+	<body>
+		<nav>
+			<a href="home.html" id="home">Home</a>
+			<a href="addBook.html"> Add Books</a>
+			<a href="allBook.html"> All Books</a>
+			<a href="signup.html">SignUp</a>
+			
+		</nav>
+		<div class="storeDepart"></div>
+		
+		
+		
+
+	</body>
+	<script>
+		var storeDepart = document.querySelector(".storeDepart");
+		//var store = document.querySelector(".store")
+		
+		
+		var currentdata = JSON.parse(localStorage.getItem("information")) || [];
+		
+		//to compare serial number
+		
+		var totaldata = JSON.parse(localStorage.getItem("bookDetails"));
+		
+		
+		//if(currentdata)
+		//{
+			var bookName = document.createElement("h5");
+			bookName.innerText = "name:"+currentdata.name;
+			bookName.setAttribute("id","selectName");
+			//css
+			bookName.style.fontStyle="italic";
+			bookName.style.fontSize="20px";
+			bookName.style.marginLeft="200px";
+			
+			
+			
+			
+			var bookAuthor = document.createElement("h5");
+			bookAuthor.innerText = "author:"+currentdata.author;
+			bookAuthor.setAttribute("id","selectauthor");
+			//css
+			bookAuthor.style.fontStyle="italic";
+			bookAuthor.style.fontSize="20px";
+			bookAuthor.style.marginLeft="200px";
+			
+			
+			var img = document.createElement("img");
+			img.style.width="200px";
+			img.style.height="200px";
+			img.style.marginLeft="200px";
+			img.setAttribute("src",currentdata.avatar);
+			
+			var divImg=document.createElement("div");
+			divImg.append(img);
+			divImg.style.width="700px";
+			divImg.style.heiht="300px";
+			divImg.setAttribute("id","selectavatar");
+				
+			
+			
+
+			var bookPublisher = document.createElement("h5");
+			bookPublisher.style.fontStyle="italic";
+			bookPublisher.style.marginLeft="200px";
+			bookPublisher.style.fontSize="20px";
+			bookPublisher.innerText = "bookPublisher:"+currentdata.publisher;
+			bookPublisher.setAttribute("id","selectpublisher");
+				
+			
+			
+			var bookSerialNumber = document.createElement("h5");
+			bookSerialNumber.style.fontStyle="italic";
+			bookSerialNumber.style.marginLeft="200px";
+			bookSerialNumber.style.fontSize="20px";
+			bookSerialNumber.innerText = "bookSerialNumber:"+currentdata.serial_number;
+			bookSerialNumber.setAttribute("id","selectserialNumber");
+			
+			var btn1 = document.createElement("button");
+			btn1.innerHTML="Edit";
+			btn1.style.width="170px";
+			btn1.style.color="black";
+		
+			btn1.style.fontSize="20px";
+			btn1.style.height="50px";
+			btn1.style.marginLeft="170px";
+			btn1.style.marginRight="70px";
+			
+			var btn2 = document.createElement("button");
+			btn2.innerHTML="Delete";
+			btn2.style.width="170px";
+			btn2.style.color="black";
+			btn2.style.fontSize="20px";
+		
+			btn2.style.height="50px";
+			
+		
+			storeDepart.append(img,bookName,bookAuthor,bookPublisher,bookSerialNumber,btn1,btn2);
+			storeDepart.style.color="white";
+			storeDepart.style.backgroundColor="black";
+			
+			
+		
+			//delete function
+		
+			btn2.onclick = function () {
+				var arr = [];
+				for(var i = 0;  i < totaldata.length; i++) 
+				{
+					if(currentdata.serial_number != totaldata[i].serial_number)
+					{
+						arr.push(totaldata[i]);
+					
+					}else
+					{
+					console.log(totaldata[i],currentdata);
+					}
+				
+				}
+				//card is variable for that serial number iqual book
+				
+				localStorage.removeItem("card");
+				localStorage.setItem("bookDetails",JSON.stringify(arr));
+				alert("deleted succesfully");
+				window.location.href="allBook.html";
+			
+			}
+			
+			//edit part
+			
+			
+			btn1.onclick = function(){
+				storeDepart.innerHTML="";
+				let namediv = document.createElement("div");
+				let nameInput = document.createElement("input");
+				nameInput.setAttribute("type", "text")
+				nameInput.setAttribute("value", currentdata.name)
+				nameInput.setAttribute("class", "NAME");
+				namediv.append(nameInput);
+				namediv.style.marginLeft="200px";
+				namediv.style.marginTop="30px";
+				
+
+
+
+				let authordiv = document.createElement("div");
+				let authorInput = document.createElement("input");
+				authorInput.setAttribute("type", "text")
+				authorInput.setAttribute("value", currentdata.author);
+				authorInput.setAttribute("class", "AUTHOR");
+				authordiv.append(authorInput);
+				authordiv.style.marginLeft="200px";
+				authordiv.style.marginTop="10px";
+				
+				let yeardiv = document.createElement("div");
+				let yearInput = document.createElement("input");
+				yearInput.setAttribute("type", "text")
+				yearInput.setAttribute("value", currentdata.year);
+				yearInput.setAttribute("class", "YEAR");
+				yeardiv.append(yearInput);
+				yeardiv.style.marginLeft="200px";
+				yeardiv.style.marginTop="10px";
+
+				let typediv = document.createElement("div");
+				let typeInput = document.createElement("input");
+				typeInput.setAttribute("type", "text")
+				typeInput.setAttribute("value", currentdata.type);
+				typeInput.setAttribute("class", "TYPE");
+				typediv.append(typeInput);
+				typediv.style.marginLeft="200px";
+				typediv.style.marginTop="10px";
+				
+
+				let publisherdiv = document.createElement("div");
+				let publisherInput = document.createElement("input");
+				publisherInput.setAttribute("type", "text")
+				publisherInput.setAttribute("value", currentdata.publisher);
+				publisherInput.setAttribute("class", "PUBLISHER");
+				publisherdiv.append(publisherInput);
+				publisherdiv.style.marginLeft="200px";
+				publisherdiv.style.marginTop="10px";
+				
+				let ratediv = document.createElement("div");
+				let rateInput = document.createElement("input");
+				rateInput.setAttribute("type", "text")
+				rateInput.setAttribute("value", currentdata.rate);
+				rateInput.setAttribute("class", "RATE");
+				ratediv.append(rateInput);
+				ratediv.style.marginLeft="200px";
+				ratediv.style.marginTop="10px";
+
+
+
+				let done = document.createElement("div");
+				done.textContent = "Done";
+				done.setAttribute("class", "butn")
+				done.style.border="2px solid white";
+				done.style.width="100px";
+				done.style.height="30px";
+				done.style.paddingTop="10px";
+				done.style.paddingLeft="50px";
+				done.style.marginLeft="200px";
+				done.style.marginTop="50px"
+				done.style.backgroundColor="white";
+				done.style.color="black";
+				
+				done.onclick = function(){
+
+				var name=document.querySelector(".NAME").value;
+				var authour=document.querySelector(".AUTHOR").value;
+				var year=document.querySelector(".YEAR").value;
+				var publisher=document.querySelector(".PUBLISHER").value;
+				var type=document.querySelector(".TYPE").value;
+				var rate=document.querySelector(".RATE").value;
+
+				let obj ={name, authour, year,publisher,type,rate};
+				
+
+
+				localStorage.setItem("bookinformation", JSON.stringify({...currentdata, ...obj}))
+
+				let arr=[];
+				for(let i=0; i<totaldata.length; i++){
+					if(totaldata[i].serial_number === currentdata.serial_number){
+						arr.push({...currentdata, ...obj});
+					}
+					else{
+						arr.push(totaldata[i])
+					}
+				}
+					alert("edited successfully");
+					localStorage.setItem("bookDetails", JSON.stringify(arr))
+					window.location.href="allBook.html";
+
+				}
+
+
+
+
+				storeDepart.append(img,namediv,authordiv,yeardiv,typediv,publisherdiv,ratediv, done)
+				
+				// storeDepart.append(avatar,nameInput,authorInput,yearInput,typeInput,publisherInput,rateInput,done);
+
+				}
+		
+		
+	</script>
+</html>

@@ -1,0 +1,197 @@
+<html>
+
+	<head>
+		<title>login page</title>
+	</head>
+		<style>
+			body {
+				background-image:url("https://images.pexels.com/photos/13208159/pexels-photo-13208159.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+					
+			}
+			nav {
+				border:2px solid white;
+				width:100%;
+				height:50px;
+				position:fixed;
+				font-style: italic;
+				top:0;
+				left:0;
+				padding-top:20px;
+				background:black;
+				color: white;
+
+			}
+			.aa {
+				font-size:25px;
+				font-style: italic;
+				color:white;
+				text-decoration:none;
+				margin-top:20px;
+				margin-left:400px;
+			}
+			#home {
+				font-size:25px;
+				color:white;
+				font-style: italic;
+				text-decoration:none;
+				margin-top:20px;
+				margin-left:100px;
+			
+			}
+			.loginDepartment {
+				
+				background-color:black;
+				margin-top:40px;
+				margin-left:350px;
+				height:370px;
+				width:300px;
+
+			}
+			input{
+				background-color:black;
+				margin-left:70px;
+				color:white;
+				width:350px;
+				height:50px;
+				font-size:25px;
+				margin-top:20px;
+
+			}	
+			.btn {
+				padding:10px 50px 10px  50px;
+				margin-top:20px;
+				color:white;
+				margin-left:170px;
+				background-color:black;
+				
+
+			}
+			#click {
+					
+				background-color:white;
+			}	
+
+			input[type="checkbox"] {
+				margin-top:-35px;
+				margin-left:370px;
+			  	appearance: none;
+			  	color:black;
+			  	width: 15px;
+			  	height: 15px;
+			  	border: 2px solid white;
+				border-radius:3px;
+			 	background-color: white;
+			  	cursor: pointer;
+			}
+
+			input[type="checkbox"]:checked {
+				background-color: red;
+			  	border-color: #2196F3;
+			}
+			.page {
+			width:500px;
+			height:400px;
+			margin-top:350px;
+			margin-left:650px;
+			background-color: black;
+			border:3px solid white;
+			
+			
+			}
+			h1 {
+				color:white;
+				margin-left:200px;
+			}
+			a {
+				color:white;
+				text-decoration:none;
+				margin-left:200px;
+			
+			}
+			.forgot {
+				margin-left:270px;
+			
+			}
+			#signpage {
+				margin-left:170px;
+			
+			}
+			img {
+			width:20px;
+			height:20px;
+			margin-right:10px;
+			border:1px solid white;
+			border-radius: 100px 20px 40px;
+		
+			}
+
+		</style>
+	<body>
+		<nav>
+			<a class="aa" href="home.html" id="home">Home</a>
+			<a class="aa" href="addBook.html"> Add Books</a>
+			<a class="aa" href="allBook.html"> All Books</a>
+			<a class="aa" href="signup.html">SignUp</a>
+			
+			</nav>
+		<div class="page">
+			<h1>Log In</h1>
+			<input class="UserName"  type ="text"  placeholder="UserName"></br>
+			<input type="password" id="myInput" value="password">  
+			<div class="checkbox-container"><input type="checkbox"  id ="click" value="see" onclick="security()">
+			</div></br>
+			<a  class ="forgot" href="forgot.html">forgot password?</a>
+			<button class="btn"><b>LOG IN </b></button><br><br>
+			<a  id ="signpage" href="signup.html"><img src="https://cdn3.iconfinder.com/data/icons/glyph-hand-gestures/512/pointing_right-512.png">signpage?</a>
+			
+		</div>
+	</body>
+	<script>
+
+		function security () {
+    		var check= document.getElementById("myInput");
+    			if (check.type === "password") {
+    	  			check.type = "text";
+    			} else {
+      				check.type = "password";
+    			}
+  		}
+	
+		var button = document.querySelector(".btn");
+		var box = JSON.parse(localStorage.getItem("data")) || [] ;
+		console.log(box);
+		
+		button.onclick = function () {
+
+		var UserName = document.querySelector(".UserName").value;
+		var password = document.querySelector("#myInput").value;
+			console.log(UserName, password)
+			if(UserName != " "  && password !=" ")
+			{
+				for(var i = 0; i < box.length; i++)
+				{	
+					if(UserName === box[i].UserName)
+					{		
+				
+						if(password === box[i].password)
+						{
+							localStorage.setItem("presentData", JSON.stringify(box[i]));
+							alert("Loged in Successfully")
+							window.location.href = "home.html";
+							return
+						}
+					
+					}
+				}
+
+			}
+			else{
+				alert("The fileds should be empty!");	
+				return;
+			}
+
+			alert("User Doesnt exist")
+			window.location.href = "signup.html";
+		}
+	</script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>synchronus example</h1>
+</body>
+<script>
+    var a = 10;
+    console.log(a);
+    var b = 70;
+    console.log(b);
+    setTimeout(() => {
+       console.log("successfully ranju") 
+    },1000);
+    var c = 77;
+    console.log(c);
+
+    ///promises
+
+     let marks = 10;
+     const checking = new Promise((resolve, reject)=> {
+        if(marks == 100){
+            reject(setTimeout(()=> {
+                console.log("faile ouch ");
+            }),1000);
+            
+        }else if(marks == 100) {
+            console.log("congrats ranju");
+        }
+    }).then((res)=> {
+        console.log("res");
+
+    }).catch((err)=> {
+        console.log("err");
+    })
+
+    ////hoisting
+
+</script>
+</script>
+</html>
